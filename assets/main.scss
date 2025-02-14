@@ -5,8 +5,8 @@
 @import "{{ site.theme }}";
 
 body {
-    background-color: #333333; // 深灰色背景
-    color: #ffffff; // 将文字颜色改为白色，确保可读性
+    background-color: #333333 !important; // 深灰色背景
+    color: #ffffff !important; // 将文字颜色改为白色，确保可读性
 }
 
 .post img {
