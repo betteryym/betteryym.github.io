@@ -8,7 +8,7 @@ layout: home
 
 ## 最新文章
 
-{% for post in site.posts limit:5 %}
+{% for post in paginator.posts %}
 ### [{{ post.title }}]({{ post.url }})
 {{ post.date | date: "%Y年%m月%d日" }}
 
@@ -18,6 +18,42 @@ layout: home
 
 ---
 {% endfor %}
+
+<!-- 分页导航 -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+      <a href="/" class="previous">← 上一页</a>
+    {% else %}
+      <a href="/page{{ paginator.previous_page }}/" class="previous">← 上一页</a>
+    {% endif %}
+  {% endif %}
+  
+  <span class="page_number">
+    第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页
+  </span>
+  
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}/" class="next">下一页 →</a>
+  {% endif %}
+</div>
+
+<!-- 页码导航 -->
+<div class="page-numbers">
+  {% for page_num in (1..paginator.total_pages) %}
+    {% if page_num == paginator.page %}
+      <span class="current-page">{{ page_num }}</span>
+    {% else %}
+      {% if page_num == 1 %}
+        <a href="/" class="page-link">{{ page_num }}</a>
+      {% else %}
+        <a href="/page{{ page_num }}/" class="page-link">{{ page_num }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
 
 ## 文章分类
 

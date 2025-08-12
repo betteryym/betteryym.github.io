@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页演示 - yym的技术空间</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .post {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .post h3 {
+            margin: 0 0 10px 0;
+            color: #007bff;
+        }
+        .post .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .post .excerpt {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .post .read-more {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .post .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* 分页导航样式 */
+        .pagination {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .pagination a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            color: #007bff;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            text-decoration: none;
+        }
+        
+        .pagination .page_number {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .pagination .previous,
+        .pagination .next {
+            font-weight: 500;
+        }
+        
+        /* 页码导航样式 */
+        .page-numbers {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .page-numbers .page-link,
+        .page-numbers .current-page {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            margin: 0 0.25rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .page-numbers .page-link {
+            color: #007bff;
+            background-color: white;
+            border: 1px solid #dee2e6;
+        }
+        
+        .page-numbers .page-link:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            text-decoration: none;
+        }
+        
+        .page-numbers .current-page {
+            color: white;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            font-weight: 500;
+        }
+        
+        .demo-info {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-info h3 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+        
+        .demo-info p {
+            margin: 10px 0;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>yym的技术空间</h1>
+        
+        <div class="demo-info">
+            <h3>分页功能演示</h3>
+            <p>这是分页功能的静态演示页面，展示了分页导航和页码导航的样式效果。</p>
+            <p>在实际的Jekyll博客中，这些内容会根据文章数量自动生成。</p>
+        </div>
+        
+        <h2>最新文章</h2>
+        
+        <!-- 第1页的文章 -->
+        <div class="post">
+            <h3><a href="#" class="read-more">IM思考</a></h3>
+            <div class="date">2025年02月14日</div>
+            <div class="excerpt">关于即时通讯系统的思考和分析，探讨IM系统的设计理念、技术架构和用户体验优化...</div>
+            <a href="#" class="read-more">阅读更多</a>
+        </div>
+        
+        <div class="post">
+            <h3><a href="#" class="read-more">认证授权</a></h3>
+            <div class="date">2025年02月15日</div>
+            <div class="excerpt">深入探讨现代Web应用中的认证和授权机制，包括JWT、OAuth2.0、RBAC等技术的实现...</div>
+            <a href="#" class="read-more">阅读更多</a>
+        </div>
+        
+        <div class="post">
+            <h3><a href="#" class="read-more">SSO登陆</a></h3>
+            <div class="date">2025年02月16日</div>
+            <div class="excerpt">单点登录系统的设计与实现，分析SSO的工作原理、安全考虑和最佳实践...</div>
+            <a href="#" class="read-more">阅读更多</a>
+        </div>
+        
+        <div class="post">
+            <h3><a href="#" class="read-more">IM架构演变</a></h3>
+            <div class="date">2025年02月18日</div>
+            <div class="excerpt">即时通讯系统架构的演进历程，从单体应用到微服务架构的转变过程...</div>
+            <a href="#" class="read-more">阅读更多</a>
+        </div>
+        
+        <div class="post">
+            <h3><a href="#" class="read-more">BFF</a></h3>
+            <div class="date">2025年03月10日</div>
+            <div class="excerpt">Backend for Frontend模式的应用，探讨BFF在微服务架构中的作用和实现方式...</div>
+            <a href="#" class="read-more">阅读更多</a>
+        </div>
+        
+        <!-- 分页导航 -->
+        <div class="pagination">
+            <span class="page_number">第 1 页，共 3 页</span>
+            <a href="#" class="next">下一页 →</a>
+        </div>
+        
+        <!-- 页码导航 -->
+        <div class="page-numbers">
+            <span class="current-page">1</span>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+        </div>
+        
+        <h2>文章分类</h2>
+        <h3>技术架构</h3>
+        <ul>
+            <li><a href="#">IM架构演变</a> - 2025年02月18日</li>
+            <li><a href="#">BFF</a> - 2025年03月10日</li>
+            <li><a href="#">状态机模式</a> - 2025年03月11日</li>
+        </ul>
+        
+        <h3>系统设计</h3>
+        <ul>
+            <li><a href="#">认证授权</a> - 2025年02月15日</li>
+            <li><a href="#">SSO登陆</a> - 2025年02月16日</li>
+            <li><a href="#">缓存一致性</a> - 2025年03月17日</li>
+        </ul>
+        
+        <h2>关于我</h2>
+        <p>热爱技术，喜欢探索和分享。主要关注领域包括分布式系统、Java技术栈、缓存技术、架构设计等。</p>
+        <p>欢迎交流和指正！</p>
+    </div>
+    
+    <script>
+        // 简单的分页交互演示
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageLinks = document.querySelectorAll('.page-link');
+            const currentPage = document.querySelector('.current-page');
+            
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageNum = this.textContent;
+                    
+                    // 更新当前页码显示
+                    currentPage.textContent = pageNum;
+                    currentPage.className = 'current-page';
+                    
+                    // 更新其他页码链接
+                    pageLinks.forEach(l => l.className = 'page-link');
+                    this.className = 'current-page';
+                    
+                    // 更新分页信息
+                    document.querySelector('.page_number').textContent = `第 ${pageNum} 页，共 3 页`;
+                    
+                    // 更新上一页/下一页按钮
+                    const prevBtn = document.querySelector('.previous');
+                    const nextBtn = document.querySelector('.next');
+                    
+                    if (pageNum == 1) {
+                        if (prevBtn) prevBtn.style.display = 'none';
+                        if (nextBtn) nextBtn.style.display = 'inline-block';
+                    } else if (pageNum == 3) {
+                        if (prevBtn) prevBtn.style.display = 'inline-block';
+                        if (nextBtn) nextBtn.style.display = 'none';
+                    } else {
+                        if (prevBtn) prevBtn.style.display = 'inline-block';
+                        if (nextBtn) nextBtn.style.display = 'inline-block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,66 +1,155 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
-
-@import "{{ site.theme }}";
+--- # Only the main Sass file needs front matter (the dashes are enough) --- @import "{{ site.theme }}";
 
 body {
-    background-color: #e3e3e3 !important; // 深灰色背景
+        background-color: #e3e3e3 !important; // 深灰色背景
 }
 
 .post img {
         display: block;
-        border:1px solid #021a40;
+        border: 1px solid #021a40;
         vertical-align: top;
         margin-left: auto;
         margin-right: auto;
 }
 
 .post figcaption {
-  text-align: center;
-  font-size: .8rem;
-  font-style: italic;
-  color: light-grey;
+        text-align: center;
+        font-size: .8rem;
+        font-style: italic;
+        color: light-grey;
 }
 
-.language-python { border-left: 1px solid lightcoral; }
+.language-python {
+        border-left: 1px solid lightcoral;
+}
 
-.language-python + .language-plaintext {
+.language-python+.language-plaintext {
         border-left: 1px solid grey;
         margin-left: 1rem !important;
 }
-.language-python + .language-plaintext code { background-color: white !important; }
-.language-python + .language-plaintext pre  { background-color: white !important; }
+
+.language-python+.language-plaintext code {
+        background-color: white !important;
+}
+
+.language-python+.language-plaintext pre {
+        background-color: white !important;
+}
 
 // for Jupyter Notebook HTML Code Cells from https://www.fast.ai/public/css/hyde.css
 
-.input_area pre, .input_area div {
-        margin-bottom:0.1rem !important;
-        margin-top:0.1rem !important;
-        padding-bottom:0 !important;
-        padding-top:0 !important;
+.input_area pre,
+.input_area div {
+        margin-bottom: 0.1rem !important;
+        margin-top: 0.1rem !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
 }
-.output_area pre, .output_area div {
-        margin-bottom:0.1rem !important;
-        margin-top:0.1rem !important;
-        padding-bottom:0 !important;
-        padding-top:0 !important;
+
+.output_area pre,
+.output_area div {
+        margin-bottom: 0.1rem !important;
+        margin-top: 0.1rem !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
         background-color: white !important;
 }
+
 .input_area pre {
         border-left: 1px solid lightcoral;
 }
+
 .output_area pre {
         border-left: 1px solid grey;
         margin-left: 1rem !important;
 }
+
 .codecell {
         border-right: 2px solid lightgrey;
-        margin-bottom:1rem !important;
-        margin-top:1rem !important;
-        padding-bottom:0 !important;
-        padding-top:0 !important;
+        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
 }
 
-.codecell table { width: auto; }
+.codecell table {
+        width: auto;
+}
 
+// 分页导航样式
+.pagination {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #007bff;
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+        text-decoration: none;
+}
+
+.pagination .page_number {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+        color: #6c757d;
+        font-weight: 500;
+}
+
+.pagination .previous,
+.pagination .next {
+        font-weight: 500;
+}
+
+// 页码导航样式
+.page-numbers {
+        text-align: center;
+        margin: 1rem 0;
+}
+
+.page-numbers .page-link,
+.page-numbers .current-page {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        margin: 0 0.25rem;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+}
+
+.page-numbers .page-link {
+        color: #007bff;
+        background-color: white;
+        border: 1px solid #dee2e6;
+}
+
+.page-numbers .page-link:hover {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+        text-decoration: none;
+}
+
+.page-numbers .current-page {
+        color: white;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        font-weight: 500;
+}
